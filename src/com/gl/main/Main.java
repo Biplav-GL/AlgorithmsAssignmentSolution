@@ -1,4 +1,4 @@
-package com.gl;
+package com.gl.main;
 import java.util.Scanner;
 
 import com.gl.services.BinarySearch;
