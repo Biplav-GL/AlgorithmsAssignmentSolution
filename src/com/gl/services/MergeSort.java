@@ -26,6 +26,7 @@ public class MergeSort {
         }
      */
 
+    //Method for Descending Order Sort
     public static void descendingSort(double[] arr, int left, int right){
         if (left < right) {
             int mid = (left+right)/2;
@@ -35,6 +36,7 @@ public class MergeSort {
         }
     }
 
+    //Method for Ascending Order Sort
     public static void ascendingSort(double[] arr, int left, int right){
         if (left < right) {
             int mid = (left+right)/2;
