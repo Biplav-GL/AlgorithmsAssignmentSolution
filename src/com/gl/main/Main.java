@@ -79,6 +79,8 @@ public class Main {
                     break;
 
                 case 5:
+                    //Sorting the array as Binary Search Requires the array to be sorted
+                    MergeSort.ascendingSort(sharePrices, 0, sharePrices.length-1);
                     System.out.println("Enter the key value to search for Specific Share Price: ");
                     double inputByUser = sc.nextDouble();
                     int outputIndex  = BinarySearch.performBinarySearch(sharePrices, 0, sharePrices.length, inputByUser);
@@ -88,9 +90,11 @@ public class Main {
                         System.out.println("Stock of value " + inputByUser + " is present");
                     }
                     break;
+
+                default:
+                    System.out.println("Please Enter a valid number for performing the Operations!!");
             }
         }
-
         sc.close();
     }
 }
