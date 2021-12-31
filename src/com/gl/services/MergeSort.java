@@ -1,22 +1,52 @@
 package com.gl.services;
 
 
-/*Input Details
-    double[] arr      --> Array to be Sorted
-    int left          --> Left most position of Array
-    int right         --> Right most position of Array
-    boolean sortType  --> For Ascending Sort enter true and false for a descending sort
- */
+
 public class MergeSort {
-    public static void performMergeSort(double[] arr, int left, int right, boolean sortType){
+
+    /* Approach one was the below function where I can add one more additional Parameter while calling
+    performMergeSort Method,But to reduce the complexity I have created two different functions
+    which can be called by the user in a simple way.
+
+    This is just a thought - Please suggest which one is better.
+
+        Input Details:
+        double[] arr      --> Array to be Sorted
+        int left          --> Left most position of Array
+        int right         --> Right most position of Array
+        boolean sortType  --> For Ascending Sort enter true and false for a descending sort
+
+        public static void performMergeSort(double[] arr, int left, int right, boolean sortType){
+            if (left < right) {
+                int mid = (left+right)/2;
+                performMergeSort(arr, left, mid, sortType);
+                performMergeSort(arr, mid+1, right, sortType);
+                mergeArray(arr, left, mid, right, sortType);
+            }
+        }
+     */
+
+    public static void descendingSort(double[] arr, int left, int right){
         if (left < right) {
             int mid = (left+right)/2;
-            performMergeSort(arr, left, mid, sortType);
-            performMergeSort(arr, mid+1, right, sortType);
-            mergeArray(arr, left, mid, right, sortType);
+            descendingSort(arr, left, mid);
+            descendingSort(arr, mid+1, right);
+            mergeArray(arr, left, mid, right, false);
         }
     }
 
+    public static void ascendingSort(double[] arr, int left, int right){
+        if (left < right) {
+            int mid = (left+right)/2;
+            ascendingSort(arr, left, mid);
+            ascendingSort(arr, mid+1, right);
+            mergeArray(arr, left, mid, right, true);
+        }
+    }
+
+    /* Input Details:
+        boolean sortType --> For Ascending Sort enter true and false for a descending sort
+    */
     public static void mergeArray(double[] arr, int left, int mid, int right, boolean sortType) {
         int len1 = mid-left+1;
         int len2 = right-mid;

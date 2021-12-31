@@ -30,10 +30,10 @@ public class Main {
             dailyPriceDetails[i-1] = sc.nextBoolean();
         }
 
-
+        /* Debug Prints to check the Entry by User
         printAnyArray.printDoubleArray(sharePrices);
         printAnyArray.printBooleanArray(dailyPriceDetails);
-
+        */
 
         boolean loopCondition = true;
         while (loopCondition) {
@@ -57,13 +57,13 @@ public class Main {
                     break;
 
                 case 1:
-                    MergeSort.performMergeSort(sharePrices, 0, sharePrices.length-1, true);
+                    MergeSort.ascendingSort(sharePrices, 0, sharePrices.length-1);
                     System.out.println("Stock prices in ascending order are :");
                     printAnyArray.printDoubleArray(sharePrices);
                     break;
 
                 case 2:
-                    MergeSort.performMergeSort(sharePrices, 0, sharePrices.length-1, false);
+                    MergeSort.descendingSort(sharePrices, 0, sharePrices.length-1);
                     System.out.println("Stock prices in descending order are :");
                     printAnyArray.printDoubleArray(sharePrices);
                     break;
@@ -81,11 +81,11 @@ public class Main {
                 case 5:
                     System.out.println("Enter the key value to search for Specific Share Price: ");
                     double inputByUser = sc.nextDouble();
-                    boolean output  = BinarySearch.performBinarySearch(sharePrices, 0, sharePrices.length-1, inputByUser);
-                    if (output) {
-                        System.out.println("Stock of value " + inputByUser + " is present ");
-                    } else {
+                    int outputIndex  = BinarySearch.performBinarySearch(sharePrices, 0, sharePrices.length, inputByUser);
+                    if (outputIndex == -1) {
                         System.out.println("Stock of value " + inputByUser + " is not present");
+                    } else {
+                        System.out.println("Stock of value " + inputByUser + " is present");
                     }
                     break;
             }
